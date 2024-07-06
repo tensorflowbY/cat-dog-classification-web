@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Görüntü Sınıflandırma Uygulaması</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-image: url('background.jpg'); /* Replace with your image path */
+            background-size: cover;
+            background-position: center;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.9); /* Slightly transparent background */
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        h1 {
+            margin-bottom: 1rem;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            align-items: center;
+        }
+        input[type="file"] {
+            padding: 0.5rem;
+        }
+        button {
+            padding: 0.5rem 1rem;
+            background-color: #007BFF;
+            border: none;
+            color: white;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .result, .uploaded-image {
+            margin-top: 1rem;
+        }
+        img {
+            max-width: 300px;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Görüntü Sınıflandırma Uygulaması</h1>
+        <form action="/" method="post" enctype="multipart/form-data">
+            <input type="file" name="image">
+            <button type="submit">Görüntüyü Sınıflandır</button>
+        </form>
+        {% if result %}
+            <div class="result">
+                <h2>Sınıflandırma Sonucu: {{ result }}</h2>
+            </div>
+        {% endif %}
+        {% if image_url %}
+            <div class="uploaded-image">
+                <img src="{{ image_url }}" alt="Uploaded Image">
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
